@@ -229,8 +229,12 @@ namespace Aloha_MusicLibrary
                 Console.Write("\nSilmek istediğiniz şarkının ID'sini yazınız: ");
                 var deleteSong = int.Parse(Console.ReadLine());
 
-                songService.deleteSong(deleteSong);
-                Console.WriteLine("Seçilen şarkı silinmiştir.");
+                if(!string.IsNullOrEmpty(deleteSong.ToString()))
+                {
+                    songService.deleteSong(deleteSong);
+                    Console.WriteLine("Seçilen şarkı silinmiştir.");
+                }
+               
             }
             catch (Exception ex)
             {
@@ -251,9 +255,9 @@ namespace Aloha_MusicLibrary
             try
             {
                 Console.Write("\nGüncelleme yapmak istediğiniz sanatçının ID'sini giriniz: ");
-                var choseArtist = int.Parse(Console.ReadLine());
+                int choseArtist = int.Parse(Console.ReadLine());
 
-                if (choseArtist != null && choseArtist != 0)
+                if (!string.IsNullOrEmpty(choseArtist.ToString())) // sanatçı ID si string'e çevrilip değerin boş ya da geçersizliği kontrol edildi.
                 {
                     Console.Write("Yeni sanatçı adı: ");
                     var newArtistName = Console.ReadLine();
@@ -289,8 +293,12 @@ namespace Aloha_MusicLibrary
                 Console.Write("\nSilmek istediğiniz sanatçının ID'sini yazınız: ");
                 var deleteArtist = int.Parse(Console.ReadLine()); // listeden seçilen sanaıtçı ID si alındı
 
-                artistService.deleteArtist(deleteArtist); // alınan ID deleteArtist metoduna eklendi
-                Console.WriteLine("Seçilen sanatçı silinmiştir.");
+                if(!string.IsNullOrEmpty(deleteArtist.ToString()))
+                {
+                    artistService.deleteArtist(deleteArtist); // alınan ID deleteArtist metoduna eklendi
+                    Console.WriteLine("Seçilen sanatçı silinmiştir.");
+                }
+
             }
             catch (Exception ex)
             {
@@ -300,7 +308,7 @@ namespace Aloha_MusicLibrary
 
         }
 
-        static void GetPlaylistSong() // müzik listesi detayını görüntüleme
+        static void GetPlaylistSong() // çalma listesi detayını görüntüleme
         {
             try
             {
@@ -324,7 +332,7 @@ namespace Aloha_MusicLibrary
             
         }
 
-        static void AddNewPlaylist() // yeni öüzik listesi oluşturma
+        static void AddNewPlaylist() // yeni çalma listesi oluşturma
         {
             try
             {
@@ -354,7 +362,7 @@ namespace Aloha_MusicLibrary
             
         }
 
-        static void UpdatePlaylist() // Müzik listesi güncelleme
+        static void UpdatePlaylist() // çalma listesi güncelleme
         {
             try
             {
@@ -367,7 +375,7 @@ namespace Aloha_MusicLibrary
                 Console.Write("\nDüzenlemek istediğiniz çalma listesinin ID'sini yazınız: ");
                 var updatePlaylistId = int.Parse(Console.ReadLine());
 
-                if (updatePlaylistId != 0 && updatePlaylistId != null)
+                if (!string.IsNullOrEmpty(updatePlaylistId.ToString()))
                 {
                     Console.Write("Yeni çalma listesi adı: ");
                     var playlistName = Console.ReadLine();
@@ -388,7 +396,7 @@ namespace Aloha_MusicLibrary
 
         }
 
-        static void DeletePlaylist() // Müzik listesi silme
+        static void DeletePlaylist() // çalma listesi silme
         {
             try
             {
@@ -411,7 +419,7 @@ namespace Aloha_MusicLibrary
 
         }
 
-        static void PlaylistSongAddSong() // Çalma listesine şarkı ekleme
+        static void PlaylistSongAddSong() // çalma listesine şarkı ekleme
         {
             try
             {
@@ -447,7 +455,7 @@ namespace Aloha_MusicLibrary
 
         }
 
-        static void PlaylistSongRemoveSong() // Çalma listesinden şarkı silme
+        static void PlaylistSongRemoveSong() // çalma listesinden şarkı silme
         {
             try
             {
@@ -466,8 +474,12 @@ namespace Aloha_MusicLibrary
                     Console.Write("\nSilmek istediğiniz şarkıyı seçiniz: ");
                     int songId = int.Parse(Console.ReadLine());
 
-                    playlistSongService.playlistSongRemoveSong(songId); // kullanıcıdan alınan songId "playlistSongRemoveSong" metoduna eklendi.
-                    Console.WriteLine("Seçilen şarkı çalma listesinden silinmiştir.");
+                    if(!string.IsNullOrEmpty(songId.ToString()))
+                    {
+                        playlistSongService.playlistSongRemoveSong(songId); // kullanıcıdan alınan songId "playlistSongRemoveSong" metoduna eklendi.
+                        Console.WriteLine("Seçilen şarkı çalma listesinden silinmiştir.");
+                    }
+
                 }
 
 
